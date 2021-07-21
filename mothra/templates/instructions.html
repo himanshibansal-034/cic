@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}
+Instructions
+{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bg.css') }}">
+{% endblock %}
+
+{% block content %}
+<div id='stars'></div>
+<div id='stars2'></div>
+<div id='stars3'></div>
+<div class="container">
+  <div class="page-heading text-center">
+    <h1 class="head-text">Instructions</h1>
+  </div>
+  <div class="user-forms" style="margin-top:5%">
+    <h3 style="color:yellow">How to play : </h3>
+    <p>1. Register yourself first by clicking 'Join Hunt' at homepage.</p>
+    <p>2. Login by clicking 'Take Flight' at homepage and use your Team Name (Case-Sensitive) and password given at the time of registration.</p>
+    <p>3. You start as a young Mothra with level 'born'.</p>
+    <p>4. Click on 'Go Hunting' to attempt the next challenge.</p>
+    <p>5. You are given a puzzle. You have to solve it to find the correct answer.</p>
+    <p>6. Write the answer and submit.</p>
+    <p>7. The answer will be all small letters and spaces need to be replaced with an underscore. For example if answer is 'Hello World', you need to submit it as 'hello_world'.</p>
+    <p>8. The number of attempts are infinite.</p>
+    <p>9. You can get a hint of a particular stage only after 1 hour of reaching that stage. You have to refresh to update the time remaining.</p>
+    <p>9. If your submission is accepted then you are upgraded to the next level and can attempt a new challenge.</p>
+  </div>
+  <div class="user-forms" style="margin-top:5%">
+    <h3 style="color:yellow">Judging Criteria : </h3>
+    <p>1. There are a total of 7 upgrades in the hunt.</p>
+    <p>2. Your level in the hunt is the last stage you cleared.</p>
+    <p>3. You need to reach the highest level as soon as you possibly can.</p>
+    <p>4. The team to reach a higher level before others will be ranked higher.</p>
+    <p>5. The tie break is Time itself. A person reaching a higher stage even by a millisecond will be ranked higher.</p>
+  </div>
+
+</div>
+{% endblock %}

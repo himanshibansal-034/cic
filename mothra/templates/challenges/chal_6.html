@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}
+Famous
+{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/stages.css') }}">
+<style media="screen">
+body{
+  background: #ff00cc;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #333399, #ff00cc);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #333399, #ff00cc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="contain text-center">
+  <div class="page-heading">
+    <h1 class="head-text">The Famous Upgrade</h1>
+  </div>
+  <div class="user-forms">
+    <div class="row">
+      <div class="col-sm">
+        <img class="img-fluid" src="{{ url_for('static', filename='img/cross_bunny.png') }}" alt="">
+      </div>
+      <div class="col-sm">
+        <img class="img-fluid" src="{{ url_for('static', filename='img/square_to_cube.gif') }}" alt="">
+      </div>
+
+    </div>
+    <div class="text-center">
+        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#staticBackdrop">Hint</button>
+    </div>
+  </div>
+
+
+<div class="user-forms" style="margin-top:5%;">
+{% if current_user.level==5 or current_user.user_type=="Godzilla" %}
+
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <div class="row mb-3">
+        {{ form.ans.label(class="col-sm-2 col-form-label") }}
+        <div class="col-sm-10">
+          {{form.ans(class='form-control col-sm-10')  }}
+        </div>
+      </div>
+      <div class="form-group text-center">
+          {{ form.submit(class="btn btn-outline-success") }}
+      </div>
+    </form>
+{% else %}
+    <div class="text-center">
+      <h3>Cleared on {{ stats.uptime.strftime("%d %b %Y at %I:%M %p") }}</h3>
+    </div>
+{% endif %}
+</div>
+
+</div>
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title text-warning" id="staticBackdropLabel">Hint for NOOB Upgrade</h5>
+      </div>
+      <div class="modal-body">
+        {{ hint }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-warning" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

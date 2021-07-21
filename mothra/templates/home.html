@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}
+Home
+{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bg.css') }}">
+{% endblock %}
+
+{% block content %}
+<div id='stars'></div>
+<div id='stars2'></div>
+<div id='stars3'></div>
+<div style="">
+    <img src="{{ url_for('static', filename='img/nit.png') }}" class="float-start img-fluid">
+    <img src="{{ url_for('static', filename='img/version_logo.png') }}" class="float-end img-fluid" style="margin-top:2%">
+</div>
+
+<div class="text-center" style="margin-top:10%;">
+  <img class="img-fluid" style="margin-top:-9%" src="{{ url_for('static', filename='img/wip.gif') }}" alt="">
+</div>
+
+<div class="container">
+  <marquee style="font-size:150%;" scrollamount="20">
+    {{announcement.message}}
+  </marquee>
+</div>
+<div class="container">
+  <div class="row text-center">
+    <div class="col-sm d-grid gap-2">
+      <a href="{{ url_for('instructions') }}" class="btn btn-outline-success btn-lg" style="margin-top:2%; margin-bottom:2%;" role="button" aria-pressed="true">Instructions</a>
+    </div>
+    {% if current_user.is_authenticated %}
+    <div class="col-sm d-grid gap-2">
+      <a href="{{ url_for('hunting') }}" class="btn btn-outline-success btn-lg" style="margin-top:2%; margin-bottom:2%;" role="button" aria-pressed="true">Go Hunting</a>
+    </div>
+    {% else %}
+    <div class="col-sm d-grid gap-2">
+      <a href="{{ url_for('login') }}" class="btn btn-outline-success btn-lg" style="margin-top:2%; margin-bottom:2%;" role="button" aria-pressed="true">Take flight</a>
+    </div>
+    <div class="col-sm d-grid gap-2">
+      <a href="{{ url_for('register') }}" class="btn btn-outline-success btn-lg" style="margin-top:2%; margin-bottom:2%;" role="button" aria-pressed="true">Join Hunt</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

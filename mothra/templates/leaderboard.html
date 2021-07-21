@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}
+Leaderboard
+{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bg.css') }}">
+{% endblock %}
+
+{% block content %}
+<div id='stars'></div>
+<div id='stars2'></div>
+<div id='stars3'></div>
+<div class="container text-center">
+  <div class="page-heading">
+    <h1 class="head-text">Hall Of Fame</h1>
+  </div>
+  <div class="leaderboard">
+    <div class="table-responsive">
+      <table class="table table-borderless" >
+        <thead>
+          <tr class="" style="color:rgb(255, 255, 0);">
+            <th>Rank</th>
+            <th>Team</th>
+            <th>Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% set rank=namespace(value=1) %}
+          {% for user in users %}
+            <tr class="list-item">
+              <td>{{rank.value}}</td>
+              <td>{{user.teamname}}</td>
+              <td>{{show()[user.level]}}</td>
+            </tr>
+          {% set rank.value=rank.value+1 %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
